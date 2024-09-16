@@ -1,8 +1,15 @@
 export const ROOT = 'https://www.reddit.com';
 
-export const fetchPostsFromReddit = async (subreddit = 'all') => {
+export const fetchPostsFromReddit = async (
+  subreddit = 'all',
+  searchTerm = ''
+) => {
   try {
-    const response = await fetch(`${ROOT}/r/${subreddit}.json`);
+    let url = `${ROOT}/r/${subreddit}.json`;
+    if (searchTerm) {
+      url = `${ROOT}/r/${subreddit}/search.json?q=${searchTerm}&restrict_sr=on`;
+    }
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

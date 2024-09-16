@@ -3,8 +3,8 @@ import { getPosts } from '../../services/redditService';
 
 export const fetchPosts = createAsyncThunk(
   'posts/fetchPosts',
-  async (subreddit = 'all') => {
-    return await getPosts(subreddit);
+  async ({ subreddit, searchTerm }) => {
+    return await getPosts(subreddit, searchTerm);
   }
 );
 
@@ -12,10 +12,19 @@ const postsSlice = createSlice({
   name: 'posts',
   initialState: {
     posts: [],
-    status: 'idle',
+    status: '',
     error: null,
+    searchTerm: '',
+    selectedSubreddit: 'all',
   },
-  reducers: {},
+  reducers: {
+    setSearchTerm: (state, action) => {
+      state.searchTerm = action.payload;
+    },
+    setSelectedSubreddit: (state, action) => {
+      state.selectedSubreddit = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
@@ -32,4 +41,5 @@ const postsSlice = createSlice({
   },
 });
 
+export const { setSearchTerm, setSelectedSubreddit } = postsSlice.actions;
 export default postsSlice.reducer;
