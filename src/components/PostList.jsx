@@ -13,6 +13,7 @@ const PostList = ({ posts }) => {
           numComments={post.num_comments}
           subreddit={post.subreddit}
           postId={post.id}
+          imageUrl={post.url}
         />
       ))}
     </div>
