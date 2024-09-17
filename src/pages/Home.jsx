@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchPosts,
@@ -6,11 +6,14 @@ import {
   setSelectedSubreddit,
 } from '../features/posts/postsSlice';
 import PostList from '../components/PostList';
+import PostComments from '../components/PostComments';
 import Subreddits from '../components/Subreddits';
 import Header from '../components/Header';
+import styles from './home.module.scss';
 
 const Home = () => {
-  // const [selectedSubreddit, setSelectedSubreddit] = useState('all');
+  const [showComments, setShowComments] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
   const postStatus = useSelector((state) => state.posts.status);
@@ -34,8 +37,14 @@ const Home = () => {
     dispatch(setSearchTerm(query));
   };
 
+  // TOGGLE COMMENT
+
+  const handleShowComments = (postId, postSubreddit) => {
+    setSelectedPost({ id: postId, subreddit: postSubreddit });
+    setShowComments((prev) => !prev);
+  };
   return (
-    <div>
+    <div className={styles.container}>
       <header>
         <Header onSearch={handleSearch} />
       </header>
@@ -45,9 +54,20 @@ const Home = () => {
       <main>
         <h1>Reddit Posts</h1>
         {postStatus === 'loading' && <p>Loading...</p>}
-        {postStatus === 'succeeded' && <PostList posts={posts} />}
+        {postStatus === 'succeeded' && (
+          <PostList onShowComments={handleShowComments} posts={posts} />
+        )}
         {postStatus === 'failed' && <p>Error: {error}</p>}
       </main>
+      <aside>
+        {' '}
+        {showComments && selectedPost && (
+          <PostComments
+            postId={selectedPost.id}
+            subreddit={selectedPost.subreddit}
+          />
+        )}
+      </aside>
     </div>
   );
 };

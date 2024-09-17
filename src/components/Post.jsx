@@ -10,12 +10,8 @@ const Post = ({
   postId,
   numComments,
   imageUrl,
+  onShowComments,
 }) => {
-  const [showComments, setShowComments] = useState(false);
-  const toggleComments = () => {
-    setShowComments((prev) => !prev);
-  };
-  console.log(imageUrl);
   return (
     <div className='post'>
       <h3>{title}</h3>
@@ -24,10 +20,9 @@ const Post = ({
       <a href={link} target='_blank' rel='noopener noreferrer'>
         Read more
       </a>
-      <span onClick={toggleComments}>
+      <span onClick={onShowComments}>
         <FaCommentAlt /> {numComments} comment
       </span>
-      {showComments && <PostComments subreddit={subreddit} postId={postId} />}
     </div>
   );
 };

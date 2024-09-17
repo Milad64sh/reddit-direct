@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post';
 
-const PostList = ({ posts }) => {
+const PostList = ({ posts, onShowComments }) => {
   return (
     <div className='post-list'>
       {posts.map((post) => (
@@ -14,6 +14,10 @@ const PostList = ({ posts }) => {
           subreddit={post.subreddit}
           postId={post.id}
           imageUrl={post.url}
+          onShowComments={() => {
+            onShowComments(post.id, post.subreddit);
+            console.log(post.id);
+          }}
         />
       ))}
     </div>
