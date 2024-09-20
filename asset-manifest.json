@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Milad64sh.github.io/reddit-direct/static/css/main.af9511e7.css",
-    "main.js": "/Milad64sh.github.io/reddit-direct/static/js/main.95fbeaa3.js",
-    "index.html": "/Milad64sh.github.io/reddit-direct/index.html",
-    "main.af9511e7.css.map": "/Milad64sh.github.io/reddit-direct/static/css/main.af9511e7.css.map",
-    "main.95fbeaa3.js.map": "/Milad64sh.github.io/reddit-direct/static/js/main.95fbeaa3.js.map"
+    "main.css": "/reddit-direct/static/css/main.af9511e7.css",
+    "main.js": "/reddit-direct/static/js/main.95fbeaa3.js",
+    "index.html": "/reddit-direct/index.html",
+    "main.af9511e7.css.map": "/reddit-direct/static/css/main.af9511e7.css.map",
+    "main.95fbeaa3.js.map": "/reddit-direct/static/js/main.95fbeaa3.js.map"
   },
   "entrypoints": [
     "static/css/main.af9511e7.css",
