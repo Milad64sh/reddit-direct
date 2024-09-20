@@ -1,28 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaCommentAlt } from 'react-icons/fa';
-import PostComments from './PostComments';
+import styles from './post.module.scss';
 
 const Post = ({
   title,
   description,
   link,
-  subreddit,
-  postId,
   numComments,
   imageUrl,
   onShowComments,
 }) => {
   return (
-    <div className='post'>
+    <div className={styles.container}>
       <h3>{title}</h3>
       <p>{description}</p>
-      {imageUrl && <img src={imageUrl} alt='Post Preview' />}
+      <div className={styles.imgContainer}>
+        {imageUrl && <img src={imageUrl} alt='Post Preview' />}
+      </div>
       <a href={link} target='_blank' rel='noopener noreferrer'>
         Read more
       </a>
-      <span onClick={onShowComments}>
-        <FaCommentAlt /> {numComments} comment
-      </span>
+      <div className={styles.comment} onClick={onShowComments}>
+        <span className={styles.commentIcon}>
+          <FaCommentAlt />
+        </span>{' '}
+        {numComments} comment
+      </div>
     </div>
   );
 };

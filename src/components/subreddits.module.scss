@@ -1,0 +1,59 @@
+@import '../styles/animations.scss';
+@import '../styles/variables.scss';
+.container {
+  padding: 0.25rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  .toggleBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.75rem 1rem;
+    border-radius: 50px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border: solid 1px $main-color;
+    color: $main-color;
+    cursor: pointer;
+    &:hover {
+      background-color: lighten($main-color, 20%);
+      border: solid 1px lighten($main-color, 20%);
+      color: #fff;
+    }
+    .arrowIcon {
+      padding-top: 5px;
+      padding-left: 5px;
+    }
+    .rotate {
+      transform: rotateX(180deg);
+    }
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    opacity: 0;
+    animation: slideInFromLeft 0.5s ease-in-out forwards;
+    animation-delay: calc(var(--animation-order) * 0.1s);
+    margin-bottom: 0.5rem;
+    .subredditBtn {
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      background-color: transparent;
+      border: 1px solid $main-color;
+      cursor: pointer;
+      &:hover {
+        background-color: lighten($main-color, 20%);
+        border: 1px solid lighten($main-color, 20%);
+      }
+    }
+  }
+}

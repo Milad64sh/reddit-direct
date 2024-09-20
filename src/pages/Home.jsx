@@ -48,18 +48,18 @@ const Home = () => {
       <header>
         <Header onSearch={handleSearch} />
       </header>
-      <aside>
+      <aside className={styles.subreddits}>
         <Subreddits onSubredditClick={handleSubredditClick} />
       </aside>
-      <main>
-        <h1>Reddit Posts</h1>
+      <main className={styles.mainContent}>
+        <h1 className={styles.mainContent__h1}>Reddit Posts</h1>
         {postStatus === 'loading' && <p>Loading...</p>}
         {postStatus === 'succeeded' && (
           <PostList onShowComments={handleShowComments} posts={posts} />
         )}
         {postStatus === 'failed' && <p>Error: {error}</p>}
       </main>
-      <aside>
+      <aside className={styles.comments}>
         {' '}
         {showComments && selectedPost && (
           <PostComments

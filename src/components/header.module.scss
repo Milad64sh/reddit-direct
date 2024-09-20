@@ -1,0 +1,59 @@
+@import '../styles/variables.scss';
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0.25rem;
+  background-color: rgba(#999, 0.3);
+  box-shadow: 0 0 5px #777;
+  .logo {
+    flex: 0 0 15%;
+    text-align: center;
+    font-size: 4rem;
+    color: $main-color;
+  }
+  .searchForm {
+    display: flex;
+    flex: 0 0 50%;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 767px) {
+      flex: 0 0 60%;
+    }
+    input {
+      flex: 0 0 82%;
+      height: 4rem;
+      border-radius: 30px;
+      border: none;
+      background-color: #fff;
+      padding-left: 0.5rem;
+      transition: all 0.2s ease-in-out;
+      &::placeholder {
+        font-size: 1.25rem;
+        font-style: italic;
+      }
+      &:focus {
+        outline: none;
+        flex: 0 0 85%;
+        height: 3.85rem;
+        border-radius: 50px;
+      }
+    }
+    .searchBtn {
+      flex: 0 0 15%;
+      background-color: #fff;
+      color: $main-color;
+      height: 4rem;
+      border-radius: 30px;
+      border: none;
+      margin-left: -1rem;
+      font-size: 1.75rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}

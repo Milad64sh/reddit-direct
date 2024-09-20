@@ -1,6 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchTerm, fetchPosts } from '../features/posts/postsSlice';
+import styles from './header.module.scss';
+import { FaRedditAlien } from 'react-icons/fa';
+import { IoIosSearch } from 'react-icons/io';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -18,15 +21,20 @@ const Header = () => {
     dispatch(fetchPosts({ subreddit: selectedSubreddit, searchTerm }));
   };
   return (
-    <header>
-      <form onSubmit={handleSubmitSearchInput}>
+    <header className={styles.container}>
+      <div className={styles.logo}>
+        <FaRedditAlien />
+      </div>
+      <form onSubmit={handleSubmitSearchInput} className={styles.searchForm}>
         <input
           type='text'
           placeholder='Search Posts ...'
           value={searchTerm}
           onChange={handleSearch}
         />
-        <button type='submit'>Search</button>
+        <button className={styles.searchBtn} type='submit'>
+          <IoIosSearch />
+        </button>
       </form>
     </header>
   );

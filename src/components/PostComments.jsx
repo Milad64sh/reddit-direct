@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchComments } from '../features/comments/commentsSlice';
+import styles from './postComments.module.scss';
 const PostComments = ({ subreddit, postId }) => {
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.comments.comments);
@@ -19,7 +20,7 @@ const PostComments = ({ subreddit, postId }) => {
     return <p>Error loading comments: {error}</p>;
   }
   return (
-    <div>
+    <div className={styles.container}>
       <h2>Comments</h2>
       {comments.length > 0 ? (
         <ul>
